@@ -1,7 +1,7 @@
 const path = require('path')
 const htmlWebpackPlugin = require('html-webpack-plugin')
 module.exports = {
-    entry: './src/index.js',
+    entry: './client/src/main.js',
     output: {
         path: path.join(__dirname, '/dist'),
         filename: "bundle.min.js",
@@ -9,9 +9,15 @@ module.exports = {
 
     plugins: [
         new htmlWebpackPlugin({
-            template: "./src/index.html"
+            template: "./client/src/app.html"
         })
     ],
+    resolve: {
+        extensions: ['.js', '.jsx'],
+        alias: {
+            src: path.resolve(__dirname, './client/src/')
+        },
+    },
     module: {
         rules: [
             {
