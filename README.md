@@ -9,3 +9,4 @@ Steps to run the application
 3: npm start:server to start the server.
 4: npm build:prod to generate the production build.
 Note: server will run on 4040 and client will run on 8080 port
+
