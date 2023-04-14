@@ -5,6 +5,7 @@ const createError = require('http-errors')
 const path = require('path')
 const cookieParser = require('cookie-parser')
 const db = require('./db/queries')
+const knexQueries = require('./db/knex/knexqueries')
 var indexRouter = require('./routes')
 const app = express()
 const port = 4040
@@ -31,6 +32,11 @@ app.get('/users/:id', db.getUserById)
 app.post('/users', db.createUser)
 app.put('/users/:id', db.updateUser)
 app.delete('/users/:id', db.deleteUser)
+
+app.get('/knexUsers', knexQueries.getKnexUsers)
+app.get('/knexUsers/:id', knexQueries.getKnexUserById)
+app.post('/createKnexTable', knexQueries.createTable)
+
 
 app.listen(port, () => {
     console.log(`App running on port ${port}.`)
