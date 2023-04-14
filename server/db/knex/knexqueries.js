@@ -9,11 +9,9 @@ const getKnexUserById = (req, resp) => {
 const createTable = (req, res) => {
     const {tableName, schema} = req.body
     const newTable = knexdb.schema.hasTable(tableName).then(function(exists) {
-        console.log('---exists--', exists)
         if (!exists) {
             return knexdb.schema.createTable(tableName, function(t) {
                 for(const col of schema) {
-                    console.log('----type--', col)
                     switch(col.type) {
                         case 'number':
                             if(col.isPrimary) {
